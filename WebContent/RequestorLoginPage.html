@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--  <html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body bgcolor="#c9c9c9">
+<center>
+<form method="get" action="http://localhost:8585/CampusHelpDesk/LoginServlet">
+<table border="2">
+<tr><td>Enter User Id: </td><td><input type="text" name="userId" placeholder="user Id" /></td></tr>
+<tr><td>Enter Password: </td><td><input type="password" name="password" placeholder="password" /></td></tr>
+<tr><td><input type="submit"  value="Submit" /></td><td></td></tr>
+</table>
+</form>
+</center>
+</body>
+</html> -->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login Page</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/loginForm.css">
+  
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body >
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="lib/images/iec-logo.png" id="imgNav" class="d-inline-block align-top" alt="">
+    <div class="d-inline-block align-top" style="margin-top: 10px">ABCD College of Engineering And Technology</div>
+  </a>
+</nav>
+<div class="container-fluid">
+	<h1 id="h1text1">Campus HelpDesk</h1>
+	<img src="lib/images/clip-custumer-service-support.png" alt="help-desk-picture">
+
+    <div class="content">
+ 
+      <div class="text">Login Form</div>
+      <form method="get" action="http://localhost:8585/CampusHelpDesk/LoginServlet">
+        <div class="field">
+          <span class="fas fa-user"></span>
+          <input type="text" name="userId" placeholder="User Id" required>
+		</div>
+        <div class="field">
+          <span class="fas fa-lock"></span>
+          <input type="password" name="password" placeholder="Password" required>
+          <!-- <label>Password</label> -->
+        </div>
+        <div class="forgot-pass"><a href="http://localhost:8585/CampusHelpDesk/ForgetPassword">Forgot Password?</a></div>
+        <button class="signInButton" value="Submit">Sign in</button>
+        
+      </form>
+  </div>
+      </div>
+</body>
+</html>

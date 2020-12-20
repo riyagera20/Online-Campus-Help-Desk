@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+html,body{
+  height: 100%;
+}
+
+body{
+  background: #dde1e7 !important;
+}
+
+#imgNav{
+  height: 50px;
+  width: 50px;
+}
+
+#h1text1{
+margin-top: 30px;
+}
+
+
+#imgCreateRequest{
+	height:100%;
+	width:90%;
+}
+
+
+#createRequest{
+	height:80%;
+	width:90%;
+	background: #dde1e7 !important;
+}
+.createRequestButton{
+  margin-top: 100px;
+  margin-left: 120px;
+}

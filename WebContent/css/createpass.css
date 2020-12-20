@@ -1,0 +1,15 @@
+html,body{
+  height: 100%;
+bckground-color:"aqua"
+}
+#imgNav{
+  height: 50px;
+  width: 50px;
+}
+
+.card{
+	
+	width: 700px;
+	margin: 100px auto;
+        float: none;
+}
