@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:p="http://www.springframework.org/schema/p" 
+xmlns:context="http://www.springframework.org/schema/context" 
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xsi:schemaLocation="http://www.springframework.org/schema/beans               
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd               
+http://www.springframework.org/schema/context               
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+        
+        
+ 		
+        
+        
+        
+    <context:component-scan base-package="com.ntl.ohd" />
+    <context:annotation-config/>
+        
+    <!-- Resolves Views Selected For Rendering by @Controllers to *.jsp Resources in the /WEB-INF/ Folder -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    <!-- Configuring the JDBC connection-->
+  <bean id="propertyConfigure" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" p:location="/WEB-INF/jdbc.properties"/>
+        
+        <bean id="dataSource"
+        	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        	<property name="driverClassName" value="${jdbc.driverClassName}"/>
+        	<property name="url" value="${jdbc.databaseurl}"/>
+        	<property name="username" value="${jdbc.username}"/>
+        	<property name="password" value="${jdbc.password}"/>
+        	</bean>
+   <!-- Configuring the Hibernate4 Session Factory Bean -->
+   <!-- <bean id="sessionFactoryBean" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="mappingResources">
+         <value>Requestor.hbm.xml</value>
+      </property>
+      <property name="hibernateProperties">
+         <props>
+            <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+            <prop key="hibernate.show_sql">true</prop>
+         </props>
+      </property>
+   </bean> -->
+   
+  <!--  <bean id="hibernateTemplateBean" class="org.springframework.orm.hibernate5.HibernateTemplate">
+      <property name="sessionFactory" ref="sessionFactoryBean" />
+   </bean>  -->
+   
+  <!--  <bean id="authenticateServiceBean" class="com.jcg.spring.hibernate.service.AuthService">
+      <property name="hibernateTemplate" ref="hibernateTemplateBean" />
+   </bean>  -->
+   
+   <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="checkWriteOperations" value="false"></property>
+	</bean>
+	
+	<bean id="sessionFactory"
+        		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        		<property name="dataSource" ref="dataSource"/>
+        		<!-- <property name="configLocation">
+        			<value>classpath:hibernate.cfg.xml</value>
+        		</property> -->
+        		 <property name="annotatedClasses">
+					<array>
+						<value>com.ntl.ohd.model.Requestor</value>
+						<value>com.ntl.ohd.model.Facilities</value>
+						<value>com.ntl.ohd.model.Assignee</value>
+						<value>com.ntl.ohd.model.Facility</value>
+						<value>com.ntl.ohd.model.Request</value>
+					</array>
+				</property>
+        		
+        		<property name="hibernateProperties">
+        			<props>
+        				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+        				<prop key="hibernate.show_sql">true</prop>
+        			</props>
+        		</property>
+        		</bean>
+        		
+        		<bean id="transactionManager"
+        		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        			<property name="sessionFactory" ref="sessionFactory"/>
+        		</bean>
+        		
+        		<mvc:resources mapping="/resources/**" location="/resources/" />
+        		<mvc:annotation-driven />
+</beans>
+                  
