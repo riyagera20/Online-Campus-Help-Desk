@@ -16,11 +16,17 @@
   <!-- 
 <link rel="stylesheet" href="styleP.css"> -->
     <link href="css/createpass.css" rel="stylesheet">
+    <style type="text/css">
+    	#imgNav{
+  		height: 50px;
+  		width: 50px;
+		}
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
-    <img src="iec-logo.png" id="imgNav" class="d-inline-block align-top" alt="">
+    <img src="https://ayushbucket123.s3.ap-south-1.amazonaws.com/images/iec-logo.png" id="imgNav" class="d-inline-block align-top" alt="">
     <div class="d-inline-block align-top" style="margin-top: 10px;margin-left: 5px">IEC College of Engineering And Technology</div>
   </a>
 </nav><!-- end of navbar-->

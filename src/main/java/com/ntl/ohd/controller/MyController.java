@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ntl.ohd.model.Assignee;
@@ -24,6 +25,7 @@ import com.ntl.ohd.service.FacilityService;
 import com.ntl.ohd.service.RequestorService;
 
 @Controller
+@SessionAttributes({"requestor"})
 public class MyController {
 
 	
