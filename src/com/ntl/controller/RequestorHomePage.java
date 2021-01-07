@@ -81,7 +81,7 @@ public class RequestorHomePage extends HttpServlet {
 		pw.println("<a class='nav-link' href='#services'>Facilities</a>");
 		pw.println("</li>");
 		pw.println("<li class=\"nav-item\">");
-		pw.println("<a class='nav-link' href='ContactUsForm.html'>Contact-us</a>");
+		pw.println("<a class='nav-link' href='#contact'>Contact-us</a>");
 		pw.println("</li>");
 		pw.println("<li class=\"nav-item\">");
 		pw.println("<a class='nav-link' href='/CampusHelpDesk/MyRequest'>My Request</a>");
@@ -135,11 +135,12 @@ public class RequestorHomePage extends HttpServlet {
 		pw.println("</div>");
 		pw.println("</div>");
 		pw.println("</section>");
+		pw.println("<section id='contact'>");
 		pw.println("<div id=\"form\">");
 		pw.println("<h1>Contact us</h1>");
 		pw.println("<div class=\"fish\" id=\"fish\"></div>");
 		pw.println("<div class=\"fish\" id=\"fish2\"></div>");
-		pw.println("<form id=\"waterform\" method=\"post\">");
+		pw.println("<form id=\"waterform\" method=\"post\" action='/CampusHelpDesk/ContactUsServlet'>");
 		pw.println("<div class=\"formgroup\" id=\"name-form\">");
 		pw.println("<label for=\"name\">Your name*</label>");
 		pw.println("<input type=\"text\" id=\"name\" name=\"name\" />");
@@ -155,6 +156,7 @@ public class RequestorHomePage extends HttpServlet {
 		pw.println("<input type=\"submit\" value=\"Send your message!\" />");
 		pw.println("</form>");
 		pw.println("</div>");
+		pw.println("</section>");
 		pw.println("</body>");
 		pw.println("</html>");
 	}

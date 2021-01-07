@@ -1,6 +1,8 @@
 package com.ntl.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,6 +45,8 @@ public class ContactUsServlet extends HttpServlet {
 		String message=request.getParameter("message");
 		
 		SendEmailClass.sendEmail("indianenggclg12@gmail.com",message,"Name: "+name+" having email: "+email+" has a request "+message);
+		RequestDispatcher rd = request.getRequestDispatcher("/RequestorHomePage");
+        rd.forward(request, response);
 	}
 
 	/**

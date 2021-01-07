@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ntl.dao.FacilityHeadDAO;
 import com.ntl.dao.RequestDAO;
+import com.ntl.dao.RequstorDAO;
 import com.ntl.model.Request;
 import com.ntl.services.SendEmailClass;
 
@@ -27,6 +28,7 @@ public class SubmitRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	RequestDAO rDAO;
 	FacilityHeadDAO fDAO;
+	RequstorDAO requestorDAO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -53,6 +55,7 @@ public class SubmitRequest extends HttpServlet {
 //			String userId=(String) request.getSession().getAttribute("userid");
 //			int userIdInt=Integer.parseInt(userId);
 			fDAO=new FacilityHeadDAO();
+			requestorDAO=new RequstorDAO();
 			int userId=(int) request.getSession().getAttribute("userid");
 			String facId=request.getParameter("facility");
 			String reqDesc=request.getParameter("requestdesc");
@@ -76,8 +79,10 @@ public class SubmitRequest extends HttpServlet {
 			if(rDAO.createRequest(userRequest))
 			{
 				pw.println("Request Created");
+				String requestorEmail=requestorDAO.getEmailFromRequestorId(userId);
 				String facHeadEmail=fDAO.getEmailFromFacilityId(facId);
-				SendEmailClass.sendEmail("ayushchaturvedi220@gmail.com","Request Created",reqDesc);
+				
+				SendEmailClass.sendEmail(requestorEmail,"Request Created",reqDesc);
 
 				SendEmailClass.sendEmail(facHeadEmail,reqDesc,"A Request has been created for your facility: "+reqDesc);
 				RequestDispatcher rd = request.getRequestDispatcher("/MyRequest");

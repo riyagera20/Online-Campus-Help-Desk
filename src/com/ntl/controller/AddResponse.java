@@ -56,7 +56,7 @@ public class AddResponse extends HttpServlet {
 		String facilityEmail=facilityDAO.getEmailFromFacilityId(facilityId);
 		if(!requestDao.addResponseToRequest(requestId,res))
 		{
-			request.setAttribute("errorMessage","Some error occured while closing request");
+			request.setAttribute("errorMessage","Some error occured while adding response");
 			RequestDispatcher rd=request.getRequestDispatcher("/ErrorPage");
 			rd.forward(request, response);
 		}

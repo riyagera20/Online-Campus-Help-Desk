@@ -69,7 +69,7 @@ public class FacilityHeadHomePage extends HttpServlet {
 		
 		ArrayList<Assignee> assignees=new ArrayList();
 		assignees=aDAO.getAssigneeByFacId(facilityId);
-		Iterator assigneeIterator=assignees.iterator();
+		
 		
 //		String assigneeEmail="";
 		pw.println();
@@ -80,6 +80,10 @@ public class FacilityHeadHomePage extends HttpServlet {
 		pw.println("<link href=\"lib/ionicons/css/ionicons.min.css\" rel=\"stylesheet\">");
 		pw.println("<link href=\"css/SeeFacilities.css\" rel=\"stylesheet\">");
 		pw.println("<script src=\"lib/bootstrap/js/bootstrap.min.js\"></script>");
+		pw.println("<style>");
+		pw.println("#div1{");
+		pw.println("padding:40px;}");
+		pw.println("</style>");
 		pw.println("</head>");
 		pw.println("<body>");
 		pw.println("<nav class=\"navbar navbar-dark bg-dark\">");
@@ -102,7 +106,7 @@ public class FacilityHeadHomePage extends HttpServlet {
 //		pw.println("</div>");
 		
 		pw.println("</nav>");
-		pw.println("<div class='container'>");
+		pw.println("<div id='div1' class='container-fluid'>");
 
 //		pw.println("<a href='/CampusHelpDesk/RequestorHomePage' id='hometag' >Home</a>");
 		pw.println("<h1 class='mt-20'>All Requests</h1>");
@@ -154,18 +158,19 @@ public class FacilityHeadHomePage extends HttpServlet {
 			{
 				pw.println("<td><form action='/CampusHelpDesk/AssignAssignee'>Assign to:");
 				pw.println("<select name='assignee' id=\"assignee\" class=\"form-control\">");
+				Iterator assigneeIterator=assignees.iterator();
 				while(assigneeIterator.hasNext())
 				{
 					Assignee assignee=(Assignee) assigneeIterator.next();
 					System.out.println(assignee);
 //					assigneeEmail=assignee.getEmail();
-					pw.println("<option class='formControl' value='"+assignee.getAssigneeId()+"'>"+assignee.getAssigneeName()+"</option>");
+					pw.println("<option class='formControl col-sm-4' value='"+assignee.getAssigneeId()+"'>"+assignee.getAssigneeName()+"</option>");
 					System.out.println(assignee.getAssigneeId()+" "+assignee.getAssigneeName());
 				}
 				pw.println("</select><input type='hidden' name='requestId' value='"+userRequest.getRequestId()+"' />");
 //				pw.println("<input type='hidden' name='assigneeEmail' value='"+assigneeEmail+"' />");
 				pw.println("<input type='hidden' name='reqDesc' value='"+userRequest.getRequest()+"' />");
-				pw.println("<input type='submit' class='btn btn-primary' value='Assign'></form></td>");
+				pw.println("<br><input type='submit' class='btn btn-primary' value='Assign'></form></td>");
 			}
 			else
 			{
